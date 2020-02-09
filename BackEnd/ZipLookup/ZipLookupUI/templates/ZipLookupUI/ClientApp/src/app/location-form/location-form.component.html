@@ -1,0 +1,73 @@
+<div class="form-wrapper">
+  <form [formGroup]="locationForm" (submit)="getZipCodeByAddress()">
+    <div class="text-center">
+      <img class="padding-top" src="https://img.icons8.com/nolan/64/worldwide-location.png">
+      <p class="heading padding-top">What's My Zipcode?</p>
+    </div>
+    <div class="padding-top form-container">
+      <mat-form-field>
+        <input matInput
+                placeholder="Address (Line 1)"
+                formControlName="addressFirstLine">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+                placeholder="Address (Line 2)"
+                formControlName="addressSecondLine">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+                placeholder="City"
+                formControlName="city">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <select matNativeControl
+                formControlName="state"
+                required>
+          <option *ngFor="let state of states" [ngValue]="state">
+            {{state.name}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+    <div class="padding-top">
+      <button mat-stroked-button type="submit" color="primary">Find My Zipcode!</button>
+    </div>
+    
+    <div class="padding-top-2">
+      <div class="spinner" *ngIf="resultLoading"></div>
+
+      <div class="result" *ngIf="zipcodeResult && !resultLoading && !locationForm.errors">
+        <img src="https://img.icons8.com/nolan/64/user-location.png">
+        <p class="result-text">
+          {{ zipcodeResult.zipcode }}
+        </p>
+      </div>
+
+      <div class="result" *ngIf="!zipcodeResult && !resultLoading && !locationForm.errors">
+        <img src="https://img.icons8.com/nolan/64/user-location.png">
+        <p class="result-text">
+          Your Zipcode Displays Here
+        </p>
+      </div>
+
+      <div class="result" *ngIf="locationForm.errors?.locationInvalid">
+        <img src="https://img.icons8.com/nolan/64/box-important.png">
+        <p class="result-text">
+          Hmm, this location doesn't seem to exist
+        </p>
+      </div>
+
+
+      <div class="result" *ngIf="locationForm.errors?.requestError">
+        <img src="https://img.icons8.com/nolan/64/box-important.png">
+        <p class="result-text">
+          Oops! Something went wrong
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
+
+
