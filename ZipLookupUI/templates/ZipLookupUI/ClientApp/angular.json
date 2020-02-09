@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "ZipCodeLookup"
+  "defaultProject": "ZipCodeLookup",
+  "cli": {
+    "analytics": false
+  }
 }
