@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('PRODUCTION')
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "myzipcode.net"
@@ -130,4 +130,4 @@ CORS_ORIGIN_WHITELIST = (
     'https://myzipcode.net'
 )
 
-SECURE_SSL_REDIRECT = os.getenv('PRODUCTION')
+SECURE_SSL_REDIRECT = True
