@@ -1,23 +1,23 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ZipLookupSerializer
 import requests
 
+base_url = "https://secure.shippingapis.com/ShippingAPI.dll?API=ZipCodeLookup&XML="
 
-
-class ZipLookup(APIView):
-    base_url = "https://secure.shippingapis.com/ShippingAPI.dll?API=ZipCodeLookup&XML="
+class ZipLookupView(APIView):
 
 
     def post(self, request, format=None):
-        request_xml = request.requestXml
+        request_xml = request.data['requestXml']
         full_url = base_url + request_xml
 
-        response = requests.post(baseUrl, full_url)
+        response = requests.post(base_url, full_url)
 
-        serializer = ZipLookupSerializer(response.content)
+        response_wrapper = {
+            "requestXml": response.content
+        }
 
-        return serializer.data
+        return Response(response_wrapper)
 
 
 

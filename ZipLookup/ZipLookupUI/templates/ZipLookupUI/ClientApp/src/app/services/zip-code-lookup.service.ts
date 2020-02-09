@@ -13,12 +13,12 @@ export class ZipCodeLookupService {
 
   constructor(private http: HttpClient) { }
 
-  zipcodeLookupUrl: string = environment.baseUrl + "api/zipcode-lookup";
+  zipcodeLookupUrl: string = environment.baseUrl + "zip-lookup/";
 
   getZipcodeByAddress(address: Address): Observable<ZipCodeLookupRequestWrapper> {
     let zipcodeLookupRequest = new ZipCodeLookupRequest(address);
     let wrapper = new ZipCodeLookupRequestWrapper(zipcodeLookupRequest);
 
     return this.http.post<ZipCodeLookupRequestWrapper>(this.zipcodeLookupUrl, wrapper);
-  } 
+  }
 }
