@@ -127,7 +127,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
-    'https://myzipcode.net'
+    'https://www.myzipcode.net'
 )
 
 SECURE_SSL_REDIRECT = True
