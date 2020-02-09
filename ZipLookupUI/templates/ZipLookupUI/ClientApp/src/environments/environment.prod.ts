@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://myzipcode.net/'
+  baseUrl: 'https://www.myzipcode.net/'
 };
