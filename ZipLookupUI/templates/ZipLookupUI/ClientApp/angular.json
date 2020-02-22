@@ -109,7 +109,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist-server",
+            "outputPath": "../../../static/ZipLookupUI/ui-build",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.server.json"
           },
@@ -124,7 +124,7 @@
             },
             "production": {
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
